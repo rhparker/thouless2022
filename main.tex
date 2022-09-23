@@ -66,22 +66,73 @@ where we will (unless noted otherwise) take $g = 1$.
 
 \section{Coherent Structures}
 
-Possible coherent structures that can be obtained are left-moving, right-moving, and stationary \cref{fig:coherent}. Left-moving structure moves 3 lattice sites to left in one period, reproduces itself exactly after one period (after one period, it moves one lattice site to the left, with a phase shift of $2\pi/3$). Right-moving structure moves 3 lattice sites to right in two periods, reproduces itself exactly after two period (the one shown reproduces itself exactly after 2/3 period, at which point it has moved one lattice site to the right.) Note the asymmetry of the right-moving solution. Stationary solution reproduces itself exactly after one period.
+Possible coherent structures that can be obtained are left-moving, right-moving, and stationary \cref{fig:coherent}. Left-moving solution moves 3 lattice sites to left in one period, reproduces itself exactly after one period. After one period, it moves one lattice site to the left, with a phase shift of $2\pi/3$). We have found two distinct right-moving solutions, both of which move 3 lattice sites to right in two periods. Note the large difference in powers between these two solutions. The lower power solution moves one lattice site to the right in 2/3 period, with a phase shift of $-2\pi/3$. The higher power solution moves one lattice to the right in 2/3 period, with no phase shift. Stationary solution reproduces itself exactly after one period. Note as well the presence of nanoptera in the moving solutions.
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{cccc}
+    \includegraphics[width=4cm]{leftsol} &
+    \includegraphics[width=4cm]{rightsol} &
+    \includegraphics[width=4cm]{right0sol} &
+    \includegraphics[width=4cm]{statsol} \\
+    \includegraphics[width=4cm]{leftcolormap} &
+    \includegraphics[width=4cm]{rightcolormap} &
+    \includegraphics[width=4cm]{right0colormap} &
+    \includegraphics[width=4cm]{statcolormap} 
+    \end{tabular}
+    \caption{Left-moving, right-moving (lower power), right-moving (higher power), and stationary coherent structures. Top is power of solution at $z=0$, bottom is colormap showing evolution of solution in $z$. $J_0 = 0.05$, $C=0.4$, $g=1$, 30 lattice sites.}
+    \label{fig:coherent}
+\end{figure}
+
+\section{Parameter continuation}
+
+Parameter continuation in $C$ can be performed on these solutions. Note that for the left-moving and lower power right-moving solution, there is a critical value of $C$ at which the nanoptera disappear. This value is different for these two solutions. This does not occur for the high-power right-moving solution.
 
 \begin{figure}[H]
     \centering
     \begin{tabular}{ccc}
-    \includegraphics[width=5cm]{leftsol} &
-    \includegraphics[width=5cm]{rightsol} &
-    \includegraphics[width=5cm]{statsol} \\
-    \includegraphics[width=5cm]{leftcolormap} &
-    \includegraphics[width=5cm]{rightcolormap} &
-    \includegraphics[width=5cm]{statcolormap} 
+    \includegraphics[width=5cm]{leftcontpower}   &
+    \includegraphics[width=5cm]{rightcontpower}  &
+    \includegraphics[width=5cm]{right0contpower} \\
+    \includegraphics[width=5cm]{leftcontnanop}   &
+    \includegraphics[width=5cm]{rightcontnanop}  &
+    \includegraphics[width=5cm]{right0contnanop} 
     \end{tabular}
-    \caption{Left-moving, right-moving, and stationary coherent structures. Top is power of solution at $z=0$, bottom is colormap showing evolution of solution in $z$. $J_0 = 0.05$, $C=0.4$, $g=1$, 30 lattice sites.}
-    \label{fig:coherent}
+    \caption{Continuation in $C$ for left-moving, right-moving (lower power), and right-moving (higher power) solutions. Top plot is power of solution vs $C$, bottom is max of nanoptera vs $C$. $J_0 = 0.05$, $g=1$, 30 lattice sites.}
+    \label{fig:cont}
 \end{figure}
 
+\section{Left moving solution}
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{ccc}
+    \includegraphics[width=5cm]{leftm} &
+    \includegraphics[width=5cm]{leftmnanop} &
+    \includegraphics[width=5cm]{leftnanopmax} \\
+    \end{tabular}
+    \caption{Left-moving solution for three values of $m$ (left), zoom on nanoptera tails of these solutions (center), max power of nanoptera vs $m$ (right).}
+    \label{fig:left1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{ccc}
+    \includegraphics[width=5cm]{leftBD1} &
+    \includegraphics[width=5cm]{leftmaxminC} 
+    \includegraphics[width=5cm]{leftBDnanop} 
+    \end{tabular}
+    \caption{Left: Bifurcation diagram for continuation in $C$ for different lattice sizes $m$. Spectrally stable portion is thicker line. Spectral stability here is defined by having no purely real Floquet multipliers greater than 1. Multipliers off of the unit circle resulting from band collisions are not counted (these are essentially always present). Center: max and min of $C$ on bifurcation diagram for varying $m$. 
+    Right: max of nanoptera vs. $C$.}
+    \label{fig:left2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{leftafterinstability}
+    \caption{Solution right after instability for $m=60$ (top right). Position on bifurcation diagram shown in top left. Floquet spectrum in bottom left. Corresponding eigenfunction to real eigenvalue is localized (bottom right).}
+    \label{fig:left3}
+\end{figure}
 
 
 
