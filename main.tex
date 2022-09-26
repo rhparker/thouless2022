@@ -111,7 +111,7 @@ Parameter continuation in $C$ can be performed on these solutions. Note that for
     \includegraphics[width=5cm]{leftmnanop} &
     \includegraphics[width=5cm]{leftnanopmax} \\
     \end{tabular}
-    \caption{Left-moving solution for three values of $m$ (left), zoom on nanoptera tails of these solutions (center), max power of nanoptera vs $m$ (right).}
+    \caption{Left-moving solution for three values of $m$ (left), zoom on nanoptera tails of these solutions (center), max power of nanoptera vs $m$ (right). $J_0 = 0.05$, $C = 0.45$, $g=1$.}
     \label{fig:left1}
 \end{figure}
 
@@ -122,20 +122,109 @@ Parameter continuation in $C$ can be performed on these solutions. Note that for
     \includegraphics[width=5cm]{leftmaxminC} 
     \includegraphics[width=5cm]{leftBDnanop} 
     \end{tabular}
-    \caption{Left: Bifurcation diagram for continuation in $C$ for different lattice sizes $m$. Spectrally stable portion is thicker line. Spectral stability here is defined by having no purely real Floquet multipliers greater than 1. Multipliers off of the unit circle resulting from band collisions are not counted (these are essentially always present). Center: max and min of $C$ on bifurcation diagram for varying $m$. 
+    \caption{Left: Bifurcation diagram for continuation in $C$ for different lattice sizes $m$. Spectrally stable portion is thicker line. Spectral stability here is defined by having no purely real Floquet multipliers greater than 1. Multipliers off of the unit circle resulting from band collisions are not counted (these are essentially always present). For all values of $m$, spectral instability results from a collision of Floquet multipliers on unit circle at $(1,0)$, which leads to a real eigenvalue greater than 1. This occurs for both the right and left instabilities on the bifurcation diagram. See figures below for Floquet spectrum and form of corresponding eigenfunction.
+    Center: max and min of $C$ on bifurcation diagram for varying $m$. 
     Right: max of nanoptera vs. $C$.}
     \label{fig:left2}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=12cm]{leftafterinstability}
-    \caption{Solution right after instability for $m=60$ (top right). Position on bifurcation diagram shown in top left. Floquet spectrum in bottom left. Corresponding eigenfunction to real eigenvalue is localized (bottom right).}
-    \label{fig:left3}
+    \includegraphics[width=12cm]{leftafterinstabilityR}
+    \caption{Solution after the instability on right of bifurcation diagram for $m=60$ (top right). Position on bifurcation diagram shown in top left. Floquet spectrum in bottom left. Corresponding eigenfunction to real eigenvalue is localized (bottom right). $C = 0.5618$}
+    \label{fig:leftinstabR}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=7cm]{leftafterinstabilityRtimestep} &
+    \includegraphics[width=7cm]{leftafterinstabilityRpower} \\ 
+    \includegraphics[width=7cm]{leftafterinstabilityRperttimestep} &
+    \includegraphics[width=7cm]{leftafterinstabilityRpertpower}
+    \end{tabular}
+    \caption{Colormap showing time evolution of $|u_n|^2$ (left) and power of center site and right neighbors of left-moving solution for solution after the instability on right of bifurcation diagram for $m=60$. Top is unperturbed solution, bottom is perturbed by adding $\delta$ times the eigenfunction corresponding to the unstable, real Floquet eigenmode. $\delta = 0.1$, $C=0.5618$. }
+    \label{fig:leftinstabRpert}
+\end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{leftafterinstabilityL}
+    \caption{Solution after the instability on left of bifurcation diagram for $m=60$ (top right). Position on bifurcation diagram shown in top left. Floquet spectrum in bottom left. Corresponding eigenfunction to real eigenvalue is localized (bottom right). $C = 0.4104$}
+    \label{fig:leftinstabL}
+\end{figure}
 
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=7cm]{leftafterinstabilityLtimestep} &
+    \includegraphics[width=7cm]{leftafterinstabilityLpower} \\ 
+    \includegraphics[width=7cm]{leftafterinstabilityLperttimestep} &
+    \includegraphics[width=7cm]{leftafterinstabilityLpertpower}
+    \end{tabular}
+    \caption{Colormap showing time evolution of $|u_n|^2$ (left) and power of center site and right neighbors of left-moving solution for solution after the instability on left of bifurcation diagram for $m=60$. Top is unperturbed solution, bottom is perturbed by adding $\delta$ times the eigenfunction corresponding to the unstable, real Floquet eigenmode. $\delta = 0.4$, $C=0.4104$. }
+    \label{fig:leftinstabLpert}
+\end{figure}
+
+\section{Right moving solution}
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{ccc}
+    \includegraphics[width=5cm]{rightm} &
+    \includegraphics[width=5cm]{rightmnanop} &
+    \includegraphics[width=5cm]{rightmnanopmax} \\
+    \end{tabular}
+    \caption{Right-moving solution for three values of $m$ (left), zoom on nanoptera tails of these solutions (center), max power of nanoptera vs $m$ (right). $J_0 = 0.05$, $C = 0.5$, $g=1$.}
+    \label{fig:right1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{ccc}
+    \includegraphics[width=5cm]{rightBD1} &
+    \includegraphics[width=5cm]{rightmaxminC} 
+    \includegraphics[width=5cm]{rightBDnanop} 
+    \end{tabular}
+    \caption{Left: Bifurcation diagram for continuation in $C$ for different lattice sizes $m$. Spectrally stable portion is thicker line. Spectral stability here is defined by having no purely real Floquet multipliers greater than 1. Multipliers off of the unit circle resulting from band collisions are not counted (these are essentially always present). For all values of $m$, spectral instability results from a collision of Floquet multipliers on unit circle at $(1,0)$, which leads to a real eigenvalue greater than 1. This occurs for both the right and left instabilities on the bifurcation diagram. See figures below for Floquet spectrum and form of corresponding eigenfunction.
+    Center: max and min of $C$ on bifurcation diagram for varying $m$. 
+    Right: max of nanoptera vs. $C$.}
+    \label{fig:right2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{rightafterinstabilityR}
+    \caption{Solution after the instability on right of bifurcation diagram for $m=90$ (top right). Position on bifurcation diagram shown in top left. Floquet spectrum in bottom left. Corresponding eigenfunction to real eigenvalue is localized (bottom right). $C = 0.5859$}
+    \label{fig:rightinstabR}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=7cm]{rightafterinstabilityRtimestep} &
+    \includegraphics[width=7cm]{rightafterinstabilityRperttimestep}
+    \end{tabular}
+    \caption{Colormap showing time evolution of $|u_n|^2$ of unperturbed (left) and perturbed (right) right-moving solution for solution after the instability on right of bifurcation diagram for $m=90$. Top is unperturbed solution, bottom is perturbed by adding $\delta$ times the eigenfunction corresponding to the unstable, real Floquet eigenmode. $\delta = 0.4$, $C=0.5859$. }
+    \label{fig:rightinstabRpert}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{rightafterinstabilityL}
+    \caption{Solution after the instability on left of bifurcation diagram for $m=90$ (top right). Position on bifurcation diagram shown in top left. Floquet spectrum in bottom left. Corresponding eigenfunction to real eigenvalue is localized (bottom right). $C = 0.3665$}
+    \label{fig:rightinstabL}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=7cm]{rightafterinstabilityLtimestep} &
+    \includegraphics[width=7cm]{rightafterinstabilityLperttimestep}
+    \end{tabular}
+    \caption{Colormap showing time evolution of $|u_n|^2$ of unperturbed (left) and perturbed (right) right-moving solution for solution after the instability on left of bifurcation diagram for $m=90$. Top is unperturbed solution, bottom is perturbed by adding $\delta$ times the eigenfunction corresponding to the unstable, real Floquet eigenmode. $\delta = 0.4$, $C = 0.3665$. }
+    \label{fig:rightinstabLpert}
+\end{figure}
 
 
 \bibliographystyle{amsplain}
