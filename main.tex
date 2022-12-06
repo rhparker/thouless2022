@@ -110,21 +110,28 @@ At any propagation distance $Z$, the power of the solution is the squared $\ell^
 \begin{equation}
 P(u_n) = \sum_{n} | u_n(Z) |^2,
 \end{equation} 
-where the sum is taken over the entire lattice. The power is conserved, i.e. $P(u_n)$ is independent of $Z$. The evolution of the power of the solution at lattice site $n$ is given by,
-\begin{equation}\label{eq:powerevol}
+where the sum is taken over the entire lattice. The power is conserved, i.e. $P(u_n)$ is independent of $Z$. Using equation \cref{eq:modelZ} and its complex conjugate, we derive the Liouville-Von Neumann equation for the density matrix elements $\rho_{mn} = \overline{u_n} u_m$
+\begin{equation}\label{eq:rhoeq}
 \begin{aligned}
-\frac{d}{dZ} &| u_n |^2 = iL\Big[ 
-J_n(Z)\left( u_{n+1} \overline{u_n} - \overline{u_{n+1}} u_n \right) \\
-&\qquad\quad+ J_{n-1}(Z)\left( u_{n-1} \overline{u_n} - \overline{u_{n-1}} u_n \right)
-\Big] \\
-&= 2L\,\text{Im}\Big[ J_n(Z) \overline{u_{n+1}}u_n +  J_{n-1}(Z) \overline{u_{n-1}}u_n \Big]
+\frac{d}{dZ} \rho_{mn} &= iL \Big[ J_m(Z) \rho_{m+1,n} + J_{m-1}(Z) \rho_{m-1,n} \\
+&\qquad -J_n(Z) \rho_{m,n+1} - J_{n-1}(Z) \rho_{m,n-1} \big] \\
+&\qquad + iLg\left( \rho_{mm}^2 - \rho_{nn}^2 \right) \rho_{mn}
 \end{aligned}
 \end{equation}
-which is obtained by using differentiating $| u_n |^2 = u_n\overline{u_n}$ with respect to $Z$ and substituting $\cref{eq:modelZ}$. Using \cref{eq:powerevol}, we define the leftward and rightward fluxes at each lattice site $n$ by
+The evolution of power of the solution at lattice site $n$, which is given by $\rho_{nn}^2 = | u_n |^2$, is
+\begin{equation}\label{eq:powerevol}
+\begin{aligned}
+\frac{d}{dZ} \rho_{nn} &= iL \Big[ J_n(Z) \rho_{n+1,n} + J_{n-1}(Z) \rho_{n-1,n} \\
+&\qquad -J_n(Z) \rho_{n,n+1} - J_{n-1}(Z) \rho_{n,n-1} \big] \\
+&= -2L\,\text{Im}\Big[ J_n(Z) \rho_{n+1,n} + J_{n-1}(Z) \rho_{n-1,n} \Big],
+\end{aligned}
+\end{equation}
+where we used the fact that $\rho_{n,m} = \overline{\rho_{m,n}}$.
+Using the last line of \cref{eq:powerevol}, we define the leftward and rightward fluxes at each lattice site $n$ by
 \begin{equation}
 \begin{aligned}
-Q_n^L(Z) &= 2L\,J_{n-1}(Z)\,\text{Im}\left(\overline{u_{n-1}}u_n\right) \\
-Q_n^R(Z) &= 2L\,J_n(Z)\,\text{Im}\left(\overline{u_{n+1}}u_n\right)
+Q_n^L(Z) &= -2L\,J_{n-1}(Z)\,\text{Im}\left(J_{n-1}(Z) \rho_{n-1,n} \right) \\
+Q_n^R(Z) &= -2L\,J_{n-1}(Z)\,\text{Im}\left(J_n(Z) \rho_{n+1,n} \right) 
 \end{aligned}
 \end{equation}
 where positive flux denotes flow of power into site $n$. Since the power of the solution is conserved, $Q_n^R(Z) = -Q_{n+1}^L(Z)$ and $Q_n^L(Z) = -Q_{n-1}^R(Z)$.
