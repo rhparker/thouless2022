@@ -113,15 +113,15 @@ P(u_n) = \sum_{n} | u_n(Z) |^2,
 where the sum is taken over the entire lattice. The power is conserved, i.e. $P(u_n)$ is independent of $Z$. Using equation \cref{eq:modelZ} and its complex conjugate, we derive the Liouville-Von Neumann equation for the density matrix elements $\rho_{mn} = \overline{u_n} u_m$
 \begin{equation}\label{eq:rhoeq}
 \begin{aligned}
-\frac{d}{dZ} \rho_{mn} &= iL \Big[ J_m(Z) \rho_{m+1,n} + J_{m-1}(Z) \rho_{m-1,n} \\
+\frac{d \rho_{mn}}{dZ} &= iL \Big[ J_m(Z) \rho_{m+1,n} + J_{m-1}(Z) \rho_{m-1,n} \\
 &\qquad -J_n(Z) \rho_{m,n+1} - J_{n-1}(Z) \rho_{m,n-1} \big] \\
-&\qquad + iLg\left( \rho_{mm}^2 - \rho_{nn}^2 \right) \rho_{mn}
+&\qquad + iLg\left( \rho_{mm} - \rho_{nn} \right) \rho_{mn}
 \end{aligned}
 \end{equation}
-The evolution of power of the solution at lattice site $n$, which is given by $\rho_{nn}^2 = | u_n |^2$, is
+The evolution of power of the solution at lattice site $n$, which is given by $\rho_{nn} = | u_n |^2$, is
 \begin{equation}\label{eq:powerevol}
 \begin{aligned}
-\frac{d}{dZ} \rho_{nn} &= iL \Big[ J_n(Z) \rho_{n+1,n} + J_{n-1}(Z) \rho_{n-1,n} \\
+\frac{d\rho_{nn} }{dZ} &= iL \Big[ J_n(Z) \rho_{n+1,n} + J_{n-1}(Z) \rho_{n-1,n} \\
 &\qquad -J_n(Z) \rho_{n,n+1} - J_{n-1}(Z) \rho_{n,n-1} \big] \\
 &= -2L\,\text{Im}\Big[ J_n(Z) \rho_{n+1,n} + J_{n-1}(Z) \rho_{n-1,n} \Big],
 \end{aligned}
@@ -130,8 +130,8 @@ where we used the fact that $\rho_{n,m} = \overline{\rho_{m,n}}$.
 Using the last line of \cref{eq:powerevol}, we define the leftward and rightward fluxes at each lattice site $n$ by
 \begin{equation}
 \begin{aligned}
-Q_n^L(Z) &= -2L\,J_{n-1}(Z)\,\text{Im}\left(J_{n-1}(Z) \rho_{n-1,n} \right) \\
-Q_n^R(Z) &= -2L\,J_{n-1}(Z)\,\text{Im}\left(J_n(Z) \rho_{n+1,n} \right) 
+Q_n^L(Z) &= -2L\,J_{n-1}(Z)\,\text{Im}\,\rho_{n-1,n} \\
+Q_n^R(Z) &= -2L\,J_{n-1}(Z)\,\text{Im}\,\rho_{n+1,n} 
 \end{aligned}
 \end{equation}
 where positive flux denotes flow of power into site $n$. Since the power of the solution is conserved, $Q_n^R(Z) = -Q_{n+1}^L(Z)$ and $Q_n^L(Z) = -Q_{n-1}^R(Z)$.
@@ -154,6 +154,8 @@ As an initial experiment, we perform evolution experiments starting with a singl
     \label{fig:timestep1}
 \end{figure}
 
+\section{Simplified model}
+
 A heuristic explanation of these different behaviors can be found by considering the simplification of the system \cref{eq:model} obtained by approximating the coupling functions $J_n(Z)$ with step functions. Specifically, we define
 \begin{equation}\label{eq:simpleJn}
 J_n(Z) = \begin{cases}
@@ -169,6 +171,103 @@ for $Z \in [0,1]$, and extend periodically for all $Z$. The function $\chi_{[a,b
 0 & \text{otherwise}.
 \end{cases}
 \]
+Using this approximation, on the interval $Z \in [0, 1/3]$, the only coupling is between the sites $n \equiv0\,(\text{mod}\,3)$ and their left neighbors, which is effectively a string of independent dimers. Looking only at the sites $n=0$ and $n=-1$, i.e. one of these dimers, and following the analysis in \cite{Kenkre1986}, the system of equations \cref{eq:powerevol} reduces to 
+\begin{equation}\label{eq:powerevolsimple}
+\begin{aligned}
+\frac{d\rho_{0,0}}{dZ} &= iLC \left( \rho_{-1,0} - \rho_{0,-1} \right) \\
+\frac{d\rho_{-1,-1}}{dZ}  &= iLC \left( \rho_{0,-1} - \rho_{-1,0} \right) \\
+\frac{d\rho_{-1,0} }{dZ} &= iL \big[ C(\rho_{0,0} - \rho_{-1,-1}) \\
+&\qquad + g ( \rho_{-1,-1} - \rho_{0,0}) \rho_{-1,0} \big] \\
+\frac{d\rho_{0,-1}}{dZ}  &= iL \big[ C(\rho_{-1,-1} - \rho_{0,0}) \\
+&\qquad + g ( \rho_{0,0} - \rho_{-1,-1} ) \rho_{0,-1} \big].\\
+\end{aligned}
+\end{equation}
+Let $p = \rho_{0,0} - \rho_{-1,-1}$ be the difference between the powers of site $n=0$ and site $n=1$. In addition, as in \cite{Kenkre1989}, we define $q = i(\rho_{-1,0} - \rho_{0,-1})$ and $r = \rho_{-1,0} - \rho_{0,-1}$. Using \cref{eq:powerevolsimple}, we obtain the equations
+\begin{align}
+\frac{dp}{dZ} &= 2LCq \label{eq:peq}\\
+\frac{dq}{dZ} &= -L(2Cp - gpr) \label{eq:qeq}\\
+\frac{dr}{dZ} &= -Lgpq. \label{eq:req}
+\end{align}
+Since
+\[
+\frac{d}{dZ}p^2 = 2p \frac{dp}{dZ} = 4Lcpq,
+\]
+equation \cref{eq:req} becomes
+\[
+\frac{dr}{dZ} = -\frac{g}{4C}\frac{d}{dZ}p^2,
+\]
+which has solution
+\begin{equation}\label{eq:rsol}
+r = r_0 - \frac{g}{4C}\left( p^2 - p_0^2 \right),
+\end{equation}
+where $r_0$ and $p_0$ are the initial conditions at $Z=0$. Differentiating \cref{eq:peq}, substituting \cref{eq:qeq} and the solution \cref{eq:rsol}, we obtain the second-order differential equation for $p$
+\begin{equation}\label{eq:pode}
+\begin{aligned}
+\frac{d^2p}{dZ^2} &= L^2 \left( A p - B p^3 \right) \\
+A &= -4C^2 + 2Cgr_0 + \frac{g^2}{2}p_0^2
+\qquad\quad B = \frac{g^2}{2}.
+\end{aligned}
+\end{equation}
+For the case of a single-site initial condition of power $P$ at site $n=0$, $p_0 = P$ and $r_0 = 0$. Following \cite{Kenkre1986}, for fixed $C$ and $g$, equation \cref{eq:pode} has an exact solution
+\begin{equation}\label{eq:psol}
+p(Z) =
+\begin{cases}
+P\,\text{cn}\left(2CLZ ; k=\dfrac{g P}{4C} \right) & P < P^*\\
+P\,\text{dn}\left(\dfrac{g P L}{2}Z ; k=\dfrac{4C}{g P} \right) & P > P^*,
+\end{cases}
+\end{equation}
+where the critical power $P^*$ is given by
+\begin{equation}\label{eq:pstar}
+P^* = \dfrac{4C}{g}.
+\end{equation}
+The functions $\text{cn}(z ; k)$ and $\text{dn}(z ; k)$ are the Jacobi elliptic functions with elliptic modulus $k$ (we note that these are often written in terms of the elliptic parameter $m$, where $m = k^2$). Since the total power is conserved, i.e. $|u_0(Z)|^2 + |u_{-1}(Z)|^2 = P$ for all $Z$, the power at sites $n=0$ and $n=-1$ is then given by
+\begin{equation}\label{eq:u0u-1}
+\begin{aligned}
+|u_0(Z)|^2 &= \frac{1}{2}\left( P + p(Z) \right)\\
+|u_{-1}(Z)|^2 &= \frac{1}{2}\left( P - p(Z) \right)
+\end{aligned}
+\end{equation}
+The behavior of the evolution of the single-site initial condition in the simplified model can be explained based on whether $P < P^*$ or $P > P^*$.
+
+\subsection{\texorpdfstring{Case 1: $P < P^*$}{Case 1: P < Pstar}}
+
+For $P < P^*$, the solution $p(Z)$ involves the Jacobi cn function, which oscillates about 0 with period $2K(k)/CL$, where
+\begin{equation}\label{eq:Kellipticint}
+K(k) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-k^2 \sin^2 \theta}}
+\end{equation}
+is the complete elliptic integral of the first kind. The power $|u_0|^2$ oscillates about $P/2$ with the same period (\cref{fig:simplemodel1}, left). The power initially flows to the left; if the coupling is not cut off, we eventually reach a state at which the power from $n=0$ has been completely transferred to $n=-1$ (for larger starting power, this occurs at a larger value of $Z$), at which point the power starts flowing back in the other direction. We note that for most configurations, including all of the examples in \cref{fig:simplemodel1}, left), this point occurs at $Z>1/3$, thus there is still power remaining in site 0 when the coupling switches off at $Z=1/3$. For these configurations, the initial power rapidly dissipates throughout the lattice. We note that it is possible to choose parameters so that, for the simplified model, the period of $p(Z)$ is 2/3, so that power has been completely transferred from $n=0$ to $n=-1$ by the point when the coupling switches off at $Z=1/3$ (\cref{fig:simplemodel1}, top). In this case, for a single-site initial condition, the simplified model yields a traveling solution  which persists for a large interval in $Z$.
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+    \includegraphics[width=4cm]{plotCN.eps} &
+    \includegraphics[width=4cm]{plotDN.eps}
+    \end{tabular}
+    \caption{Plot of $|u_0|^2$, given by \cref{eq:u0u-1}, vs. $Z$ for initial power $P<P^*$ (left) and $P>P^*$ (right). Although this solution only holds for $Z \in [0, 1/3]$ ($Z=1/3$ is marked with a solid vertical line), it is continued to $Z=1$ for illustrative purposes. $C=0.4$, $g=1$, $P^* = 1.6$.}
+    \label{fig:simplemodel1}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=9cm]{leftsimplifiedcomplete}
+    \includegraphics[width=9cm]{statsimplifiedcomplete}
+    \caption{$C=0.75$, $g=1$, $P=0.25^2$}
+    \label{fig:simplecomplete}
+\end{figure}
+
+\subsection{\texorpdfstring{Case 2: $P > P^*$}{Case 1: P > Pstar}}
+
+For $P > P^*$, the solution $p(Z)$ involves the Jacobi dn function, which oscillates about 1 with period $4 K(k)/gPL$, where $K(k)$ is defined by \cref{eq:Kellipticint}. The power $|u_0|^2$ oscillates about the initial value $P$ with the same period (\cref{fig:simplemodel1}, left).
+The power initially flows to the left; if the coupling is not cut off, we eventually reach a state at which the system returns to its initial state, i.e. the powers at sites $n=1$ and $n=-1$ are $P$ and 0, respectively. We note that for most configurations, including all of the examples in \cref{fig:simplemodel1}, right), this point does not occur at $Z=1/3$, thus when the coupling switches off, some power has been transferred to $n=-1$. For these configurations, the initial power will eventually dissipate throughout the lattice. For large $P$, these power oscillations will be very rapid, so due to averaging, most of the power will remain at $n=0$ at $Z=1/3$, thus the dissipation will not occur until large $Z$. 
+As with the case $P<P^*$, we note that it is possible to choose parameters so that, for the simplified model, the system returns exactly to its starting condition at $Z=1/3$ (\cref{fig:simplemodel1}, bottom). In this case, for a single-site initial condition, the simplified model yields a stationary solution which persists for a large interval in $Z$.
+
+
+
+Suppose we have a single-site initial condition at site $n=0$, in which $\rho_{00} = |u_0|^2 = P$ and $\rho_{-1,-1} = |u_{-1}|^2 = 0$, so that $p_0 = P$ and $r_0 = 0$.   
+
+
+
+
 Using this approximation, equation \cref{eq:modelZ} for $u_0$ and $u_{-1}$ on $Z \in [0,1/3]$ becomes
 \begin{equation}\label{eq:approx2}
 \begin{aligned}
